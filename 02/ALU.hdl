@@ -42,5 +42,13 @@ CHIP ALU {
         ng; // 1 if (out < 0),  0 otherwise
 
     PARTS:
-   // Put you code here:
+   //if zx then x = 0
+   
+   //if nx then x= !x
+   //if zy then y = 0
+   //if ny then y = !y
+   //if f then out = x + y  else out = x & y
+   //if no then out = !out
+   //if out = 0 then zr = 1 else zr = 0
+   //if out < 0 then ng = 1 else ng = 0
 }

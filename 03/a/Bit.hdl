@@ -14,5 +14,14 @@ CHIP Bit {
     OUT out;
 
     PARTS:
-    // Put your code here:
+    Not(in=in,out=notIn);
+    And(a=notIn,b=load,out=And1);
+    And(a=in,b=load,out=And2);
+
+    //Flip Flop
+    Or(a=And1,b=nor2,out=Or1);
+    Or(a=And2,b=nor1,out=Or2);
+    Not(in=Or1,out=out);
+    Not(in=Or2,out=Qbar);
+    
 }

@@ -22,7 +22,7 @@ class SquareGame {
 
     /** Constructs a new Square Game. */
     constructor SquareGame new() {
-        let square = Square.new(0, 0, 30);
+        let square = Square.new(0, 0, 20);
         let direction = 0;
 
         return this;
@@ -54,11 +54,11 @@ class SquareGame {
                 let exit = true;
             }
             if (key = 90) {
-                do square.decSize();
-            }
-            if (key = 88) {
-                do square.incSize();
-            }
+                    do square.decSize();
+                }
+                if (key = 88) {
+                    do square.incSize();
+                }
             if (key = 131) {
                 let direction = 1;
             }

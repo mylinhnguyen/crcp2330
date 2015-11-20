@@ -40,4 +40,8 @@ CHIP CPU {
 
     PARTS:
     // Put your code here:
+    PC(in=?,load=,inc=,reset=reset,out=pc);
+    ARegister(in=,load=,out=addressM,out=);
+    Not(in=instruction[15],out=aInstruction);
+    Or(a=aInstruction,b=,out=loadA);
 }
