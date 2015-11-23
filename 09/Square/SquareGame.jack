@@ -22,7 +22,10 @@ class SquareGame {
 
     /** Constructs a new Square Game. */
     constructor SquareGame new() {
-        let square = Square.new(0, 0, 20);
+        setColor(true);
+        drawLine(256,0,256,512);
+
+        let square = Square.new(5, 240, 15);
         let direction = 0;
 
         return this;
@@ -53,18 +56,6 @@ class SquareGame {
             if (key = 81) {
                 let exit = true;
             }
-            if (key = 90) {
-                    do square.decSize();
-                }
-                if (key = 88) {
-                    do square.incSize();
-                }
-            if (key = 131) {
-                let direction = 1;
-            }
-            if (key = 133) {
-                let direction = 2;
-            }
             if (key = 130) {
                 let direction = 3;
             }
@@ -84,12 +75,7 @@ class SquareGame {
 
     /** Moves the square by 2 pixels in the current direction. */
     method void moveSquare() {
-        if (direction = 1) {
-            do square.moveUp();
-        }
-        if (direction = 2) {
-            do square.moveDown();
-        }
+
         if (direction = 3) {
             do square.moveLeft();
         }

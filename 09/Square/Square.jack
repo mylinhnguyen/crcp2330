@@ -48,26 +48,6 @@ class Square {
         return;
     }
 
-    /** Increments the size by 2 pixels. */
-    method void incSize() {
-        if (((y + size) < 254) & ((x + size) < 510)) {
-            do erase();
-            let size = size + 2;
-            do draw();
-        }
-        return;
-    }
-
-    /** Decrements the size by 2 pixels. */
-    method void decSize() {
-        if (size > 2) {
-            do erase();
-            let size = size - 2;
-            do draw();
-        }
-        return;
-	}
-
     /** Moves up by 2 pixels. */
     method void moveUp() {
         if (y > 1) {

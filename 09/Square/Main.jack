@@ -7,13 +7,15 @@ class Main {
 
     /** Initializes a new game and starts it. */    
     function void main() {
-    	do Output.printString("Hello World");
-		do Output.println(); //new line
         //var SquareGame game;
 
-        //let game = SquareGame.new();
-        //do game.run();
-        //do game.dispose();
+        do Output.printString("The Game");
+        do Output.println();
+        do Output.printString("");
+        
+        let game = SquareGame.new();
+        do game.run();
+        do game.dispose();
 
         return;
     }

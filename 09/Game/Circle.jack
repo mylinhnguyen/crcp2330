@@ -26,4 +26,14 @@ class Circle {
 		do Screen.drawRectangle(x,y,radi);
 	}
 
+	method void moveUp() {
+		if (y>1) {
+			do Screen.setColor(false);
+			do Screen.drawCircle(x, (y+size) - 1, radi);
+			let y = y-2;
+			do Screen.setColor(true);
+            do Screen.drawCircle(x, y, radi;
+		}
+	}
+
 }
