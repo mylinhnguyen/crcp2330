@@ -3,16 +3,14 @@
 // by Nisan and Schocken, MIT Press.
 // File name: projects/09/Square/Main.jack
 
+
+//Pendelum game
 class Main {
 
     /** Initializes a new game and starts it. */    
     function void main() {
-        //var SquareGame game;
+        var SquareGame game;
 
-        do Output.printString("The Game");
-        do Output.println();
-        do Output.printString("");
-        
         let game = SquareGame.new();
         do game.run();
         do game.dispose();
