@@ -71,4 +71,13 @@ class Square {
         }
         return;
     }
+    method int getX() {
+        return x;
+    }
+    method int getY() {
+        return y;
+    }
+    method int getSize() {
+        return size;
+    }
 }

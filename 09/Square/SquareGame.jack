@@ -20,8 +20,13 @@ class SquareGame {
     // The square's movement direction
     field int direction; // 0=none,1=up,2=down,3=left,4=right
 
+    field int sX;
+    field int sSize;
+
+    field int score;
     /** Constructs a new Square Game. */
     constructor SquareGame new() {
+        let score = 0;
         //draw lines for score areas
         do Screen.setColor(true);
         do Screen.drawLine(250,0,250,255);
@@ -42,12 +47,13 @@ class SquareGame {
     /** Starts the game. Handles inputs from the user that control
      *  the square's movement, direction and size. */
     method void run() {
+
         var char key;
         var boolean exit;
-
         let exit = false;
-
         while (~exit) {
+            do Output.printString("Score: ");
+            do Output.printInt(score);
             // waits for a key to be pressed.
             while (key = 0) {
                 let key = Keyboard.keyPressed();
@@ -69,7 +75,9 @@ class SquareGame {
                 let key = Keyboard.keyPressed();
                 do moveSquare();
             }
+            do edgeDetect();
         }
+       
             
         return;
 	}
@@ -85,6 +93,22 @@ class SquareGame {
         }
 
         do Sys.wait(5); // Delays the next movement.
+        return;
+    }
+
+    method void edgeDetect() {
+        let sX = square.getX();
+        let sSize = square.getSize();
+
+        if (sX < 1) {
+            let score = 0;
+        }
+        if (sX+sSize > 510) {
+            let score = 0;
+        }
+        return;
+    }
+    method void printScore() {
         return;
     }
 }
