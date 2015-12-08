@@ -1,13 +1,32 @@
 #! /usr/bin/env ruby
 #no declared datatypes
 #no semicolons
- 
+
+class Assembler 
+
+  def initialize(asm_file,hack_file)
+    @asm_file = asm_file
+    @hack_file = hack_file
+  end
+
+  def assemble!
+  	puts @asm_file.read
+  end
+
+end
+
 def args_valid?
 	return ARGV[0] && ARGV[0].end_with?(".asm") && ARGV.length == 1
 end
 
 def is_readable(path)
   return File.readable?(path)
+end
+
+def hack_filename(asm_filename)
+  asm_basename = File.basename(asm_filename, '.asm')
+  path = File.split(asm_filename)[0]
+  "#{path}/#{asm_basename}.hack"
 end
 
 unless args_valid?
@@ -21,10 +40,7 @@ unless is_readable(asm_filename)
 end
 
 File.open(asm_filename) do |asm_file|
-  asm_basename = File.basename(asm_filename, '.asm')
-  path = File.split(asm_filename)[0]
-  hack_filename = "#{path}/#{asm_basename}.hack"
-  File.open(hack_filename, 'w') do |hack_file|
+  File.open(hack_filename(asm_filename), 'w') do |hack_file|
     assembler = Assembler.new(asm_file, hack_file)
     assembler.assemble!
   end
