@@ -20,6 +20,9 @@ class SquareGame {
     // The square's movement direction
     field int direction; // 0=none,1=up,2=down,3=left,4=right
 
+    field int sSize;
+    field int sX;
+    field int sXsSize;
     field int score;
     /** Constructs a new Square Game. */
     constructor SquareGame new() {
@@ -73,9 +76,8 @@ class SquareGame {
                 do moveSquare();
 
             }
-            do edgeDetect();
+            do lineDetect();
             do eraseScore();
-            let score = score+1;
             do printScore();
             
         }
@@ -98,13 +100,26 @@ class SquareGame {
         return;
     }
 
-    method void edgeDetect() {
-        if (square.getX() < 3) {
+    method void lineDetect() {
+        let sX = square.getX();
+        let sSize = square.getSize();
+        let sXsSize = sX+sSize;
+        if (sX = 3) {
             let score = 0;
         }
-        if (square.getX()+square.getSize() > 508) {
+        if ( sXsSize = 508) {
             let score = 0;
         }
+        if (sXsSize < 250) {
+            let score = score+10;
+        }
+        if (sXsSize > 400) {
+            let score = score + 10;
+        }
+        else {
+            let score=score+1;
+        }
+
         return;
     }
     
