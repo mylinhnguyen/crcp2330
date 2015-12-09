@@ -3,6 +3,7 @@
 #no semicolons
 
 require_relative 'parser'
+
 class Assembler 
 
   def initialize(asm_file,hack_file)
