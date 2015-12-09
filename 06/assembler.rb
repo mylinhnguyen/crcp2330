@@ -2,15 +2,25 @@
 #no declared datatypes
 #no semicolons
 
+require_relative 'parser'
 class Assembler 
 
   def initialize(asm_file,hack_file)
     @asm_file = asm_file
-    @hack_file = hack_file
+    @hack_file = hack_file    
+    @parser = Parser.new(instructions_from_file)
   end
 
   def assemble!
-  	puts @asm_file.read
+    #hack_instructions = @parser.parse_asm
+    #@hack_file << hack_instructions
+  end
+
+  def instructions_from_file
+    lines = @asm_file.readlines
+    lines.each { |line| line.gsub! /\/\/.*/, ''; line.strip!}
+    lines.delete("")
+    return lines
   end
 
 end
