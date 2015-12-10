@@ -1,5 +1,6 @@
 
 class Parser
+  #create counter for address 1024
 
   def initialize(assembly_instructions)
   	@assembly_instructions = assembly_instructions
@@ -12,6 +13,8 @@ class Parser
    	  	@machine_instructions << assemble_a_command(instruction)
    	  elsif command_type(instruction) == :c_command
    	  	@machine_instructions << assemble_c_command(instruction)
+      else 
+        @machine_instructions << assemble_l_command(instruction)
    	  end
    	end
   	@machine_instructions
@@ -94,6 +97,16 @@ class Parser
   	end
   end
 
+  def assemble_l_command(instruction)
+    #determine if label exists already
+    #add to table if doesn't exist
+    #increment counter by 1
+    
+    "Label"
+  end
+  #make new label table
+  LABEL = { }
+
   DEST = { 
     nil => "",
     'M' => "001",
@@ -145,4 +158,5 @@ class Parser
     'JLE' => "110",
     'JMP' => "111"
   }
+
 end
