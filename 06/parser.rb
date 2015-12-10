@@ -19,11 +19,15 @@ class Parser
 
   def assemble_a_command(instruction)
   	command = "0"
-  	command <<constant(instruction[1..-1])
+      if instruction.end_with?("0") && !instruction.include?("1")
+        command << "000000000000000"
+      else
+  	    command << constant(instruction[1..-1])
+      end
   end
 
   def constant(value)
-  	"%015b" % value
+    "%015b" % value
   end
 
   def assemble_c_command(instruction)
@@ -35,11 +39,21 @@ class Parser
   end
 
   def comp_first_char(instruction)
-    if instruction.include?("M")
-      "1"
-    else
-      "0"  
-    end
+    if instruction.include?("=")
+      symbol = instruction.split("=")[1]
+        if symbol.include?("M")
+          "1"
+        else
+          "0" 
+        end 
+    else 
+      symbol = instruction.split(";")[0]
+        if symbol.include?("M")
+          "1"
+        else
+          "0"
+        end
+    end 
   end
   
   def comp(instruction)
